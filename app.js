@@ -3,11 +3,11 @@ const grid = document.querySelector(".grid")
 const startBtn = document.getElementById("start")
 const scoreBoard = document.getElementById("score")
 
-// vars
+// variables
 let squares = []
 let currentSnake = [2, 1, 0]
 let direction = 1
-let width = 10
+const width = 10
 let time = 600
 let timeRise = .05 // in %
 let appleIndex = 0
@@ -42,7 +42,6 @@ function move() {
         squares[currentSnake[0]].classList.add('snake')
     } else {
         clearInterval(timerId)
-        alert("Game over !")
     }    
 }
 
