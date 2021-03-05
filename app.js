@@ -3,11 +3,11 @@ const grid = document.querySelector(".grid")
 const startBtn = document.getElementById("start")
 const scoreBoard = document.getElementById("score")
 
-// vars
+// variables
 let squares = []
 let currentSnake = [2, 1, 0]
 let direction = 1
-let width = 10
+const width = 10
 let time = 600
 let timeRise = .05 // in %
 let appleIndex = 0
@@ -24,8 +24,27 @@ function createGrid() {
     }
 }
 
+// reset Game
+function reset() {
+    currentSnake.forEach(index => squares[index].classList.remove('snake'))
+    squares[appleIndex].classList.remove('apple')
+    clearInterval(timerId)
+    currentSnake = [2, 1, 0]
+    createSnake()
+    generateApple()
+    direction = 1
+    time = 600
+    score = 0
+    scoreBoard.textContent = score
+    timerId = setInterval(move, time)
+}
+
+function createSnake() {
+    currentSnake.forEach(index => squares[index].classList.add('snake'))
+}
+
 createGrid()
-currentSnake.forEach(index => squares[index].classList.add('snake'))
+createSnake()
 generateApple()
 
 // controls
@@ -42,7 +61,6 @@ function move() {
         squares[currentSnake[0]].classList.add('snake')
     } else {
         clearInterval(timerId)
-        alert("Game over !")
     }    
 }
 
@@ -57,10 +75,10 @@ function control(e) {
     else if (e.keyCode === 38 && direction !== width) direction = -width
     // down
     else if (e.keyCode === 40 && direction !== -width) direction = +width
-
 }
 
 document.addEventListener('keydown', control)
+startBtn.addEventListener('click', reset)
 
 // Game rules
 function isGameOver() {
