@@ -25,10 +25,15 @@ currentSnake.forEach(index => squares[index].classList.add('snake'))
 
 // controls
 function move() {
-    const tail = currentSnake.pop(0)
-    squares[tail].classList.remove('snake')
-    const head = currentSnake.unshift(currentSnake[0] + direction)
-    squares[currentSnake[0]].classList.add('snake')
+    if (!isGameOver()) {
+        const tail = currentSnake.pop(0)
+        squares[tail].classList.remove('snake')
+        const head = currentSnake.unshift(currentSnake[0] + direction)
+        squares[currentSnake[0]].classList.add('snake')
+    } else {
+        clearInterval(timerId)
+        alert("Game over !")
+    }    
 }
 
 const timerId = setInterval(move, time)
@@ -45,3 +50,14 @@ function control(e) {
 }
 
 document.addEventListener('keydown', control)
+
+// Game rules
+function isOutOfBoard() {
+    return (currentSnake[0] + direction < 0 ||
+        currentSnake[0] + direction > 100 ||
+        (currentSnake[0] % 10 === 0 && direction === -1) ||
+        (currentSnake[0] % 10 === 9 && direction === 1)
+    )
+}
+
+function isGameOver() { return isOutOfBoard() }
