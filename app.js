@@ -26,10 +26,9 @@ function createGrid() {
 
 // reset Game
 function reset() {
+    currentSnake.forEach(index => squares[index].classList.remove('snake'))
+    squares[appleIndex].classList.remove('apple')
     clearInterval(timerId)
-    squares = []
-    grid.innerHTML = null
-    createGrid()
     currentSnake = [2, 1, 0]
     createSnake()
     generateApple()
