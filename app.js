@@ -30,6 +30,8 @@ function move() {
     squares[currentSnake[0]].classList.add('snake')
 }
 
+const timerId = setInterval(move, time)
+
 function control(e) {
     //right
     if (e.keyCode === 39 && direction !== -1) direction = 1
@@ -40,7 +42,5 @@ function control(e) {
     // down
     else if (e.keyCode === 40 && direction !== -10) direction = 10
 }
-
-const timerId = setInterval(move, time)
 
 document.addEventListener('keydown', control)
