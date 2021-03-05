@@ -7,6 +7,7 @@ const scoreBoard = document.getElementById("score")
 let squares = []
 let currentSnake = [2, 1, 0]
 let direction = 1
+let width = 10
 let time = 1000
 
 // Initialize game
@@ -38,9 +39,9 @@ function control(e) {
     // left
     else if (e.keyCode === 37 && direction !== 1) direction = -1
     // up
-    else if (e.keyCode === 38 && direction !== 10) direction = -10
+    else if (e.keyCode === 38 && direction !== width) direction = -width
     // down
-    else if (e.keyCode === 40 && direction !== -10) direction = 10
+    else if (e.keyCode === 40 && direction !== -width) direction = width
 }
 
 document.addEventListener('keydown', control)
