@@ -57,7 +57,6 @@ function control(e) {
     else if (e.keyCode === 38) direction = -width
     // down
     else if (e.keyCode === 40) direction = width
-
 }
 
 document.addEventListener('keydown', control)
