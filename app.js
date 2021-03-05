@@ -24,8 +24,28 @@ function createGrid() {
     }
 }
 
+// reset Game
+function reset() {
+    clearInterval(timerId)
+    squares = []
+    grid.innerHTML = null
+    createGrid()
+    currentSnake = [2, 1, 0]
+    createSnake()
+    generateApple()
+    direction = 1
+    time = 600
+    score = 0
+    scoreBoard.textContent = score
+    timerId = setInterval(move, time)
+}
+
+function createSnake() {
+    currentSnake.forEach(index => squares[index].classList.add('snake'))
+}
+
 createGrid()
-currentSnake.forEach(index => squares[index].classList.add('snake'))
+createSnake()
 generateApple()
 
 // controls
@@ -59,6 +79,7 @@ function control(e) {
 }
 
 document.addEventListener('keydown', control)
+startBtn.addEventListener('click', reset)
 
 // Game rules
 function isGameOver() {
