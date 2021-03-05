@@ -50,13 +50,13 @@ let timerId = setInterval(move, time)
 
 function control(e) {
     //right
-    if (e.keyCode === 39) direction = 1
+    if (e.keyCode === 39 && direction!==-1) direction = 1
     // left
-    else if (e.keyCode === 37) direction = -1
+    else if (e.keyCode === 37&& direction!==1) direction = -1
     // up
-    else if (e.keyCode === 38) direction = -width
+    else if (e.keyCode === 38 && direction!==(+width)) direction = -width
     // down
-    else if (e.keyCode === 40) direction = width
+    else if (e.keyCode === 40 && direction!==(-width)) direction = +width
 
 }
 
