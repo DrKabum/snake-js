@@ -7,6 +7,7 @@ const scoreBoard = document.getElementById("score")
 let squares = []
 let currentSnake = [2, 1, 0]
 let direction = 1
+let lastDirectionUsed = 1
 const width = 10
 let time = 600
 let timeRise = .05 // in %
@@ -59,6 +60,7 @@ function move() {
             timerId = setInterval(move, time)
         }
         squares[currentSnake[0]].classList.add('snake')
+        lastDirectionUsed = direction
     } else {
         clearInterval(timerId)
     }    
@@ -68,13 +70,13 @@ let timerId = setInterval(move, time)
 
 function control(e) {
     //right
-    if (e.keyCode === 39 && direction !== -1) direction = 1
+    if (e.keyCode === 39 && lastDirectionUsed !== -1) direction = 1
     // left
-    else if (e.keyCode === 37 && direction !== 1) direction = -1
+    else if (e.keyCode === 37 && lastDirectionUsed !== 1) direction = -1
     // up
-    else if (e.keyCode === 38 && direction !== width) direction = -width
+    else if (e.keyCode === 38 && lastDirectionUsed !== width) direction = -width
     // down
-    else if (e.keyCode === 40 && direction !== -width) direction = +width
+    else if (e.keyCode === 40 && lastDirectionUsed !== -width) direction = +width
 }
 
 document.addEventListener('keydown', control)
