@@ -10,7 +10,7 @@ let direction = 1
 let lastDirectionUsed = 1
 const width = 10
 let time = 600
-let timeRise = .05 // in %
+let speedIncrease = .05 // in %
 let appleIndex = 0
 let applePoints = 1
 let score = 0
@@ -107,7 +107,7 @@ function eatApple(tail) {
     squares[appleIndex].classList.remove('apple')
     currentSnake.push(tail)
     squares[tail].classList.add('snake')
-    time -= (time*timeRise)
+    time -= (time*speedIncrease)
     console.log(`${time} ms.`)
     score += applePoints
     scoreBoard.textContent = score
