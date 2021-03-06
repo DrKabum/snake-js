@@ -104,6 +104,20 @@ h1 {
 .apple {
     background-color: var(--apple-red);
     border-radius: 10px;
+    position: relative;
+}
+
+.apple::after{
+    content:'';
+    background-color: green;
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    top: -4px;
+    right: 0;
+    transform: skew(-15deg, -10deg);
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 /* button */
