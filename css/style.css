@@ -115,7 +115,7 @@ h1 {
     position: absolute;
     top: -4px;
     right: 0;
-    transform: skew(-15deg, -10deg);
+    transform: skew(-10deg, -20deg);
     border-top-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
