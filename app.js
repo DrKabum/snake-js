@@ -93,7 +93,10 @@ function isGameOver() {
 function generateApple() {
     do {
         appleIndex = Math.floor(Math.random() * squares.length)
-    } while (squares[appleIndex].classList.contains('snake'))
+    } while (
+        squares[appleIndex].classList.contains('snake') ||
+        squares[appleIndex].classList.contains('apple')
+    )
 
     squares[appleIndex].classList.add('apple')
 }
